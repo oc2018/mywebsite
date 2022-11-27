@@ -118,7 +118,6 @@ section {
 .lefttext p {
     font-size: 18px;
     text-align: justify;
-    /* margin-top: 20px; */
 }
 
 .lefttext p span {
@@ -232,7 +231,7 @@ section {
 
 .about .about-content {
     display: flex;
-    margin: 20px;
+    /* margin: 20px; */
 }
 
 .heading {
@@ -610,7 +609,9 @@ section {
     }
 
     .about {
+        margin: 0;
         padding-top: 0;
+        width: 100%;
     }
     .about-content {
         flex-direction: column;
