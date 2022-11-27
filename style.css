@@ -231,7 +231,7 @@ section {
 
 .about .about-content {
     display: flex;
-    /* margin: 20px; */
+    margin: 20px;
 }
 
 .heading {
@@ -613,12 +613,13 @@ section {
         padding-top: 0;
         width: 100%;
     }
-    .about-content {
+    .about .about-content {
         flex-direction: column;
+        margin: 0;
     }
+    
     .about .abouttext {
         width: 100%;
-
     }
 
     .technologies {
