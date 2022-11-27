@@ -188,9 +188,7 @@ section {
 .socials a {
     padding: 10px;
     margin: 0 10px;
-    /* border: #444 solid 2px; */
     border-radius: 50%;
-    /* box-shadow: inset .5px .5px .5px 2.5px #f3f3f3; */
 }
 
 .socials a i {
@@ -515,7 +513,7 @@ section {
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 550px) {
     .navbar {
         position: fixed;
     }
@@ -628,6 +626,13 @@ section {
 
     .techs .tech{
         padding: 10px;
+    }
+    .socials {
+        padding: 20px 0;
+    }
+
+    .socials a {
+        margin: 0 0;
     }
     .projects-content {
         display: flex;
