@@ -624,11 +624,16 @@ section {
         width: 100%;
     }
 
-    .techs .tech{
+    .techs .tech {
         padding: 10px;
+    }
+
+    .techs .tech p{
+        padding: 10px 0;
     }
     .socials {
         padding: 20px 0;
+        margin-top: 0;
     }
 
     .socials a {
