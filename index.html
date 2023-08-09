@@ -24,13 +24,14 @@
                     <li class="listitem"><a href="#about">about</a></li>
                     <li class="listitem"><a href="#projects">projects</a></li>
                     <li class="listitem"><a href="#contacts">contacts</a></li>
+                    <li class="listitem"><a href="https://erics-blog.vercel.app/">blog</a></li>
                 </ul>            
         </nav>
         <div class="home" id="home">
             <div class="left">
                 <div class="lefttext">
                     <p>I'am <br><span> Eric Mutugi Ndege,</span><br>
-                        a JavaScript fullstack web developer. I trained as an information technologist with KASNEB, I have studied computer science and coding in Pascal, Java and JavaScript. Since march 2021, I have been focusing on JavaScript and it's font-end and back-end frameworks. I code frontend in ReactJs, NextJs, Redux, Material Ui, for backend I use NodeJs, ExpressJs and MongoDB for the Database.
+                        a JavaScript fullstack web developer. I trained as an information technologist with KASNEB, I have studied computer science and coding in Pascal, Java and JavaScript. Since march 2021, I have been focusing on JavaScript and it's front-end and back-end frameworks. I code frontend in ReactJs, NextJs, Redux, Material Ui, for backend I use NodeJs, ExpressJs and MongoDB for the Database.
                         <br>                    
                         <br>    
                         Currently i am working on TypeScript a strongly typed programming language that builds on JavaScript, giving you better tooling at any scale. 
@@ -157,14 +158,16 @@
             <h3 class="section-title">contacts</h3>
             <div class="contacts-content">
                 <contacts class="form">
-                    <form action="">
+                    <form id="form">
                         <p class="placeholder">name</p>
-                        <input type="text" name="name" id="name">
+                        <input type="text" name="name" id="name" required>
                         <p class="placeholder">email</p>
-                        <input type="email" name="email">
+                        <input type="email" name="email" id="email" required>
                         <p class="placeholder">message</p>
-                        <textarea name="message" id="message"></textarea>
+                        <textarea name="message" id="message" required></textarea>
+                        <button class="btnsubmit">send</button>
                     </form>
+                    
                 </contacts>
                 <div class="contacts-links">
                     <div class="location">
