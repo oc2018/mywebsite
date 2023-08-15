@@ -334,7 +334,7 @@ section {
 
 #next {
     top: 50%;
-    right: 1S0px;
+    right: 10px;
     transform: translate(50%, -50%);
 }
 
