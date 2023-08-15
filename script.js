@@ -38,13 +38,15 @@ const form = document.querySelector('#form');
 const submitter = document.querySelector(".btnsubmit");
 const input = document.querySelector("textarea");
 
-const fetchMessages = async(options) => {
-    const response = await fetch('http://localhost:3000/msg', options);
-    const messages = await response.json();
+const baseUrl = 'http://localhost:3000/api/';
+
+const fetchData = async(url, options) => {
+    const response = await fetch(url, options);
+    const data = await response.json();
     
-    console.log(messages);
+    return data;
 }
-fetchMessages({ mode:'cors',method: 'GET' })
+fetchData(`${baseUrl}msg`, { mode:'cors', method: 'GET' })
 
 submitter.addEventListener('click', async(e) => { 
     e.preventDefault();
@@ -54,7 +56,7 @@ submitter.addEventListener('click', async(e) => {
         ) {
         return alert('Please fill out all the fields of the form.')
     }else {
-        await fetchMessages({ mode:'cors', method: 'POST', body: JSON.stringify({
+        await fetchData(`${baseUrl}msg`,{ mode:'cors', method: 'POST', body: JSON.stringify({
             "name": form.getElementsByTagName("input")[0].value,
             "email": form.getElementsByTagName("input")[1].value,
             "message": form.getElementsByTagName("textarea")[0].value
@@ -62,4 +64,29 @@ submitter.addEventListener('click', async(e) => {
     }
     
 });
-// submitter.removeEventListener('click')
+
+// create project dynamically
+
+ const projects = fetchData(`${ baseUrl }project`, { mode: 'cors', method: 'GET' });
+ const projectsHTML = document.querySelector('.projects-content');
+
+ projects.then((ps) => ps.map( p => {
+    projectsHTML.innerHTML += `
+    <div class="project">
+        <div class="project-title">${ p.title }</div>
+        <div class="project-pic"><img src="${ p.screenShot }" alt="mou sacco"></div>
+        <div class="project-description"><p>${ p.description }</p></div>
+        <div class="btns">
+            <button><a href="${ p.gitLink }">view code</a></button>
+            <button><a href="${ p.projectLink }" target="_blank">run live</a></button>
+        </div>
+    </div>     
+    `
+ }   
+ ));
+
+
+
+
+
+console.log(projects)

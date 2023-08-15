@@ -1,6 +1,19 @@
 import mongoose from "mongoose";
 import Message from "../models/messages.model.js";
 
+export const getMessage = async (req, res) => {
+    const {id: _id} = req.params;
+
+    try {
+        const data = await Message.findById(_id);
+        
+        res.status(200).send(data);
+    } catch (error) {
+       console.log(error);
+       res.status(500).send({ message: error.message}); 
+    }
+}
+
 export const getMessages = async(req, res) => {
     try {
         const data = await Message.find();
@@ -14,7 +27,7 @@ export const getMessages = async(req, res) => {
 
 export const createMsg = async(req, res) => {
     const data = req.body;
-    // console.log(data);
+    
      try {
         const newMsg = new Message(data);
         await newMsg.save();
@@ -35,7 +48,7 @@ export const updateMsg = async(req, res) => {
         if (!mongoose.Types.ObjectId.isValid( _id)) return res.status(404).send({ error: 'Invalid id' });
          const isExistingMsg = await Message.findOne({_id});
          if(!isExistingMsg  ) return res.status(404).send({ error: 'Message not found'});
-         const updatedMsg = await Message.findByIdAndUpdate(_id, ...data, { new: true });
+         const updatedMsg = await Message.findByIdAndUpdate(_id,{ ...data}, { new: true });
 
          res.status(200).send(updatedMsg);
      } catch (error) {

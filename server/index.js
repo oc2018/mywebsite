@@ -4,13 +4,15 @@ import env from 'dotenv';
 import cors from 'cors';
 
 import msgRoutes from './routes/message.routes.js';
+import projectRoutes from './routes/project.routes.js';
 
 env.config();
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use('/msg', msgRoutes)
+app.use('/api/msg', msgRoutes);
+app.use('/api/project', projectRoutes);
 
 app.get('/', (req, res) => {
     res.send('Welcome to my website')
