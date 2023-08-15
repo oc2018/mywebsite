@@ -60,8 +60,12 @@ submitter.addEventListener('click', async(e) => {
             "name": form.getElementsByTagName("input")[0].value,
             "email": form.getElementsByTagName("input")[1].value,
             "message": form.getElementsByTagName("textarea")[0].value
-        }), headers: { 'Content-Type': 'application/json' } })
+        }), headers: { 'Content-Type': 'application/json' } });
+        alert('Message sent successfully');
     }
+    form.getElementsByTagName("input")[0].value = ''
+    form.getElementsByTagName("input")[1].value = ''
+    form.getElementsByTagName("textarea")[0].value = ''
     
 });
 
@@ -85,8 +89,36 @@ submitter.addEventListener('click', async(e) => {
  }   
  ));
 
+// carousel
 
+const gap = 1;
 
+const carousel = document.querySelector('#carousel');
+const content = carousel.querySelector('#content');
+const prev = document.querySelector('#prev');
+const next = document.querySelector('#next');
 
+next.addEventListener('click', e => { 
+    carousel.scrollBy(width + gap, 0 );
+    if(carousel.scrollWidth !== 0 ) {
+        prev.style.display = 'flex';
+    }
+    if (content.scrollWidth - width - gap <= carousel.scrollLeft + width) {
+        next.style.display = 'none';
+    }
+});
 
-console.log(projects)
+prev.addEventListener('click', e => {
+    carousel.scrollBy(-(width - gap), 0);
+    if (carousel.scrollLeft - width -gap <= 0) {
+        prev.style.display = 'none';
+    }
+    if (!content.scrollLeft - width - gap <= carousel.scrollLeft + width) {
+        next.style.display = 'flex';
+    }
+});
+
+let width = carousel.offsetWidth;
+window.addEventListener('resize', e => {
+    width = carousel.offsetWidth;
+})

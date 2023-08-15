@@ -121,36 +121,19 @@
     <section id="projects">
         <div class="projects">
             <h3 class="section-title">projects</h3>
-            <div class="projects-content">
-                <!-- <div class="project">
-                    <div class="project-title">mou-sacco webapp</div>
-                    <div class="project-pic"><img src="https://llamdodu.sirv.com/images/screenshot-mou-sacco.png" alt="mou sacco"></div>
-                    <div class="project-description"><p>Mou sacco app is a simple erp that helps to record the sacco's members details and contributions, and enable each member to view their respective contributions and print a transactions statement.</p></div>
-                    <div class="btns">
-                        <button><a href="https://github.com/oc2018/mou-sacco-app.git">view code</a></button>
-                        <button><a href="https://mou-sacco.netlify.app/" target="_blank">run live</a></button>
+            <!-- carousel -->
+            <div id="wrapper">
+                <div id="carousel">
+                    <div id="content">
+                        <div class="projects-content"></div>                        
                     </div>
                 </div>
-                <div class="project">
-                    <div class="project-title">teaMs app</div>
-                    <div class="project-pic"><img src="https://llamdodu.sirv.com/images/screenshot-localhost_3000-2022.11.16-09_34_45.png" alt="teaMs"></div>
-                    <div class="project-description"><p>TeaMs is a simple tea picking management system that records the dairly weight picked and generates monthly or/and annual reports. </p><br><br></div>
-                    <div class="btns">
-                        <button><a href="https://github.com/oc2018/teaMs-app.git">view code</a></button>
-                        <button><a href="https://mou-sacco.netlify.app/" target="_blank">run live</a></button>
-                    </div>
-                </div>
-                <div class="project">
-                    <div class="project-title">ontime blog</div>
-                    <div class="project-pic"><img src="https://llamdodu.sirv.com/images/screenshot-ontime-blog.vercel.app-2022.11.15-16_08_20.png" alt="blog"></div>
-                    <div class="project-description"><p>Ontime blog is a live blog where i write articles on various topical issues. It's a collection of various articles that I read, educational pieces, programming and life lessons.</p><br></div>
-                    <div class="btns">
-                        <button><a href="https://github.com/oc2018/ontime-blog.git">view code</a></button>
-                        <button><a href="https://erics-blog.vercel.app" target="_blank">run live</a></button>
-                    </div>
-                </div>
-                </div>
-                <div class="more-projects"></div> -->
+                <button id="prev">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <button id="next">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
             </div>
         </div>
     </section>
@@ -165,7 +148,7 @@
                         <p class="placeholder">email</p>
                         <input type="email" name="email" id="email" required>
                         <p class="placeholder">message</p>
-                        <textarea name="message" id="message" required></textarea>
+                        <textarea name="message" id="message" rows="3" required></textarea>
                         <button class="btnsubmit">send</button>
                     </form>
                     
