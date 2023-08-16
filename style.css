@@ -234,7 +234,7 @@ section {
 }
 
 .heading {
-    padding: 20px;
+    /* padding-top: 50px; */
     font-size: 35px;
     text-align: center;
 }
@@ -259,6 +259,7 @@ section {
     align-items: center;
     justify-content: center;
     cursor: pointer;
+    padding-top: 50px;
 }
 
 .techs .tech i {
