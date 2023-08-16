@@ -527,7 +527,7 @@ section {
  
  @media only screen and (max-width: 768px)  {
     .logo {
-        padding: 0 50px;
+        padding: 0 10px;
         font-size: 30px;
     }
     .hambuger {
