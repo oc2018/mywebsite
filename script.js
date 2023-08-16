@@ -46,7 +46,8 @@ const fetchData = async(url, options) => {
     
     return data;
 }
-fetchData(`${baseUrl}msg`, { mode:'cors', method: 'GET' })
+
+fetchData(`${ baseUrl }msg`, { mode:'cors', method: 'GET' })
  
 submitter.addEventListener('click', async(e) => { 
     e.preventDefault();
