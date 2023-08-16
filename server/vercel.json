@@ -1,0 +1,10 @@
+{
+    "version": 2,
+    "name": "erics-website-bg",
+    "builds": [
+      { "src": "", "use": "@vercel/node" }
+    ],
+    "routes": [
+      { "src": "/(.*)", "dest": "/index.js" }
+    ]
+  }
