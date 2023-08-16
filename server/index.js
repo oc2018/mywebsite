@@ -5,11 +5,12 @@ import cors from 'cors';
 
 import msgRoutes from './routes/message.routes.js';
 import projectRoutes from './routes/project.routes.js';
+import { baseURL } from '../admin/src/util/backendUrl.js';
 
 env.config();
 
 const app = express();
-app.use(cors());
+app.use(cors({ origin: baseURL }));
 app.use(express.json());
 app.use('/api/msg', msgRoutes);
 app.use('/api/project', projectRoutes);
