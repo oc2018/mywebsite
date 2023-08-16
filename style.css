@@ -522,9 +522,8 @@ section {
     color: #ffffff;
 }
 
+/* tablet responsiveness  */
 
-
- 
  @media only screen and (max-width: 768px)  {
     .logo {
         padding: 0 10px;
@@ -556,6 +555,10 @@ section {
     .left .btns button {
         margin-top: 10px;
         font-size: 15px;
+    }
+
+    .socials a {
+        margin: 0;
     }
 
     .right {
@@ -602,6 +605,13 @@ section {
 }
 
 @media only screen and (max-width: 550px) {
+    #home {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url(https://llamdodu.sirv.com/images/ndege-eric-removebg-preview.png);
+        background-blend-mode: darken;
+        background-color: #555;
+    }
     .navbar {
         position: fixed;
     }
@@ -679,10 +689,12 @@ section {
     }
 
     .lefttext p {
-        font-size: 16px;
+        font-size: 1.25rem;
+        color: #ffffff;
     }
     .lefttext p span {
         font-size: 30px;
+        color: #f39595;
     }
 
     .left .btns {
@@ -692,6 +704,10 @@ section {
     .left .btns button {
         font-size: 20px;
         padding: 10px 8px;
+    }
+
+    .left .socials a i {
+        color: #ffffff;
     }
 
     .about {
