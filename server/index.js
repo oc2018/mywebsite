@@ -10,7 +10,7 @@ import { baseURL } from '../admin/src/util/backendUrl.js';
 env.config();
 
 const app = express();
-app.use(cors({ origin:`www.ericndege.com/` `https://mywebsite-backend-fe.vercel.app/` }));
+app.use(cors());
 app.use(express.json());
 app.use('/api/msg', msgRoutes);
 app.use('/api/project', projectRoutes);
