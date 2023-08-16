@@ -749,7 +749,11 @@ section {
         justify-content: center;
         align-items: center;
         width: 100%;
-        padding: 20px;
+        padding: 0;
+    }
+    
+    .projects-content:first-child {
+        padding-top: 20px;
     }
 
     .contacts {
