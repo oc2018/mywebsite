@@ -4,7 +4,7 @@ import { baseURL } from '../util/backendUrl';
 export const messagesApi = createApi({
     reducerPath: 'messagesApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: 'https://mywebsite-backend-fe.vercel.app/api'
+        baseUrl: baseURL,
     }),
     endpoints: (builder) => ({
         getMessage: builder.query({
