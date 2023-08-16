@@ -1,1 +1,1 @@
-export const baseURL = 'https://mywebsite-backend-fe.vercel.app/api/';
+export const baseURL = 'https://mywebsite-backend-fe.vercel.app/api';
