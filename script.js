@@ -38,7 +38,7 @@ const form = document.querySelector('#form');
 const submitter = document.querySelector(".btnsubmit");
 const input = document.querySelector("textarea");
 
-const baseUrl = 'https://mywebsite-backend-fe.vercel.app/api/';
+const baseUrl = 'https://mywebsite-backend-mocha.vercel.app/api/';
 
 const fetchData = async(url, options) => {
     const response = await fetch(url, options);
@@ -47,7 +47,7 @@ const fetchData = async(url, options) => {
     return data;
 }
 fetchData(`${baseUrl}msg`, { mode:'cors', method: 'GET' })
-
+ 
 submitter.addEventListener('click', async(e) => { 
     e.preventDefault();
     if (!form.getElementsByTagName("input")[0].value ||
