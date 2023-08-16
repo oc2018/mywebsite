@@ -38,7 +38,7 @@ const form = document.querySelector('#form');
 const submitter = document.querySelector(".btnsubmit");
 const input = document.querySelector("textarea");
 
-const baseUrl = 'http://localhost:3000/api/';
+const baseUrl = 'https://mywebsite-backend-fe.vercel.app/api';
 
 const fetchData = async(url, options) => {
     const response = await fetch(url, options);
