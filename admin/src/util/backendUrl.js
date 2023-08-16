@@ -1,0 +1,1 @@
+export const baseURL = 'https://vercel.com/oc2018/mywebsite-backend/api';
