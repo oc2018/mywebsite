@@ -562,6 +562,10 @@ section {
         padding-top: 0;
     }
 
+    #prev, #next {
+        display: none;
+    }
+
     .projects-content {
         display: grid;
         padding: 50px;
