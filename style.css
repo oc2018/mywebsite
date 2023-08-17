@@ -35,7 +35,6 @@ p {
 
 .logo {
     display: inline;
-    /* width: 50%; */
     line-height: 80px;
     padding: 0 80px;
     font-size: 45px;
@@ -53,7 +52,7 @@ p {
  ul li {
     display: inline;
     line-height: 80px;
-    padding: 0 20px;
+    padding: 0 10px;
 }
 
 
@@ -531,9 +530,18 @@ section {
 
 /* tablet responsiveness  */
 
- @media only screen and (max-width: 768px)  {
+ @media only screen and (max-width: 916px)  {
+    section, .home {
+        min-height: auto;
+    }
+    
+    #home {
+        height: auto;
+        padding-top: 20px;        
+    }
+
     .logo {
-        padding: 0 20px;
+        padding: 0 15px;
         font-size: 30px;
     }
     .hambuger {
@@ -543,9 +551,6 @@ section {
         font-size: 15px;
     }
 
-    ul li {
-        padding: 0;
-    }
     .left {
         margin-top: 70px;
         padding: 20px;
@@ -631,6 +636,11 @@ section {
 }
 
 @media only screen and (max-width: 550px) {
+
+    section, .home {
+        min-height: 100vh;
+    }
+
     #home {
         background-repeat: no-repeat;
         background-position: center;
