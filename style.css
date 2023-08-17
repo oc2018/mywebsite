@@ -638,7 +638,7 @@ section {
 @media only screen and (max-width: 550px) {
 
     section, .home {
-        min-height: calc(100vh - 80px);
+        min-height: 100vh;
     }
 
     #home {
@@ -655,12 +655,21 @@ section {
 
     .navbar {
         position: fixed;
+        background: transparent;
+        box-shadow: none;
     }
-
+    
     .hambuger span {
         display: block;
+        background-color: #ffffff;
     } 
+
+    .navbar.scroll {
+        background-color: #444;
+    }
+
     .logo {
+        color: #ffffff;
         padding: 0 30px;
     }
 
@@ -670,7 +679,6 @@ section {
         height: 100vh;
         top: 0px;
         right: -100%;
-        /* transform: translateX(700px) rotate(-90deg); */
         transition: .5s;
         text-align: center;
         transition: all .5s;

@@ -92,7 +92,7 @@ submitter.addEventListener('click', async(e) => {
 
 // carousel
 
-const gap = 1;
+const gap = 16;
 
 const carousel = document.querySelector('#carousel');
 const content = carousel.querySelector('#content');
@@ -122,4 +122,16 @@ prev.addEventListener('click', e => {
 let width = carousel.offsetWidth;
 window.addEventListener('resize', e => {
     width = carousel.offsetWidth;
+})
+
+// add class to navbar
+const navbar = document.querySelector('.navbar');
+window.addEventListener('scroll', e => {
+    const h = window.scrollY;
+    if (h > 50) {
+        navbar.classList.add('scroll');
+    } else {
+        navbar.classList.remove('scroll');
+    }
+
 })
