@@ -36,7 +36,15 @@ export const projectsApi = createApi({
                 url: `/project/${id}`,
                 method: 'DELETE',
             })
-        })
+        }),
+        async onQueryStarted(args, { dispatch, queryFulfilled}){
+            try {
+                await queryFulfilled;
+                await dispatch(projectsApi.endpoints.getProjects.initiate())
+            } catch (error) {
+                console.error(error)
+            }
+        }
     }),
 });
 

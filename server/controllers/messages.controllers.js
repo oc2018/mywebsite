@@ -16,7 +16,7 @@ export const getMessage = async (req, res) => {
 
 export const getMessages = async(req, res) => {
     try {
-        const data = await Message.find();
+        const data = await Message.find().sort({_id: -1});
 
         res.status(200).send(data);
     } catch (error) {

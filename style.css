@@ -790,6 +790,11 @@ section {
         margin-top: 20px;
     }
 
+    .project .btns button:nth-child(2) {
+        margin-top: 0px;
+    }
+
+
     .technologies {
         width: 100%;
         margin: 0;

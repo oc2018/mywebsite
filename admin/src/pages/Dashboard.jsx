@@ -1,18 +1,20 @@
 // import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { useGetMessagesQuery, useDeleteMessageMutation } from '../services/messages';
-import { useGetProjectsQuery, useDeleteProjectMutation } from '../services/projects';
+import { useGetMessagesQuery, useDeleteMessageMutation } from '../services/messagesApi';
+import { useGetProjectsQuery, useDeleteProjectMutation } from '../services/projectsApi';
+import { useGetUsersQuery } from '../services/userApi';
 import { Loading } from '../components';
 import { dateFormatter } from '../util/dateFormatter';
 
 const Dashboard = () => {
     const { data: messages, isLoading: messagesIsLoading } = useGetMessagesQuery();
+    const { data: users } = useGetUsersQuery();
     const [ deleteMessage ]  = useDeleteMessageMutation();
     const [ deleteProject ] = useDeleteProjectMutation();
     const { data: projects, isLoading: projectIsLoading } = useGetProjectsQuery();
 
-    // console.log(projects)
+    console.log(users)
 
     const deleteMsg = ( id ) => {
       // e.preventDefault();
@@ -41,7 +43,7 @@ const Dashboard = () => {
                   </div>
                   <p className='py-3'>{ message.message }</p>
                   <div className='flex justify-between w-full'>
-                  <Link className='text-sm px-3 py-1 rounded-sm text-blue-500 font-semibold bg-gray-300 hover:bg-blue-50' to={`msgForm/${ message._id }`}>Edit Message</Link>
+                  <Link className='text-sm px-3 py-1 rounded-sm text-blue-500 font-semibold bg-gray-300 hover:bg-blue-50' to={`/msgForm/${ message._id }`}>Edit Message</Link>
                   <Link className='text-sm px-3 py-1 rounded-sm text-red-500 font-semibold hover:bg-red-50' onClick={() => deleteMsg( message._id ) }>Delete Message</Link>
                   </div>
               </div>
@@ -66,7 +68,7 @@ const Dashboard = () => {
                 <p className='text-[500] '>Project Url: <Link to={project.projectLink}><span className='text-sm text-indigo-600 italic cursor-pointer'>{ project.projectLink }</span></Link></p>
               </div>
               <div className='flex justify-between mt-3 w-full'>
-                <Link className='text-sm px-3 py-1 rounded-sm text-blue-500 font-semibold bg-gray-300 hover:bg-blue-50' to={`projectForm/${ project._id }`}>Edit Project</Link>
+                <Link className='text-sm px-3 py-1 rounded-sm text-blue-500 font-semibold bg-gray-300 hover:bg-blue-50' to={`/projectForm/${ project._id }`}>Edit Project</Link>
                 <Link className='text-sm px-3 py-1 rounded-sm text-red-500 font-semibold hover:bg-red-50 ' onClick={() => deletePjt( project._id ) }>Delete Project</Link>
               </div>
             </div>

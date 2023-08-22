@@ -33,6 +33,14 @@ export const messagesApi = createApi({
                 method: 'DELETE',
             }),
         }),
+        async onQueryStarted(args, { dispatch, queryFulfilled}) {
+            try {
+                await queryFulfilled;
+                await dispatch(messagesApi.endpoints.getMessages.initiate());
+            } catch (error) {
+                console.log(error);
+            }
+        },
     }),
 })
 

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { useCreateMessageMutation, useGetMessageQuery, useUpdateMessageMutation } from '../services/messages';
+import { useCreateMessageMutation, useGetMessageQuery, useUpdateMessageMutation } from '../services/messagesApi';
 
 const MessageForm = () => {
     const { id } = useParams();
@@ -17,7 +17,7 @@ const MessageForm = () => {
 
     const handleClear = () => {
       setFormData(initialState);
-        navigate('/');
+        navigate('/dashboard');
     }
 
     const handleClick = (e) => {

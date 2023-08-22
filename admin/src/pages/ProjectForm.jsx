@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import {  useNavigate, useParams } from "react-router-dom";
 
-import { useCreateProjectMutation, useGetProjectQuery, useUpdateProjectMutation } from '../services/projects';
+import { useCreateProjectMutation, useGetProjectQuery, useUpdateProjectMutation } from '../services/projectsApi';
 
 const ProjectsForm = () => {
   const initialState = { title: '', description: '', screenShot: '', gitLink: '', projectLink: '' };
@@ -16,7 +16,7 @@ const ProjectsForm = () => {
 
   const handleClear = () => {
     setFormData(initialState);
-    navigate('/');
+    navigate('/dashboard');
   }
 
   const handleSubmit = (e) => {
