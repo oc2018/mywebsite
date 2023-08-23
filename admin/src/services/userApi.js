@@ -1,6 +1,8 @@
 import { fetchBaseQuery, createApi } from "@reduxjs/toolkit/dist/query/react";
 import { baseURL } from "../util/backendUrl";
 
+import { currentUserApi } from "./currentUserApi";
+
 export const userApi = createApi({
     reducerPath: 'userApi',
     baseQuery: fetchBaseQuery({
@@ -8,42 +10,50 @@ export const userApi = createApi({
     }),
     endpoints: (builder) => ({
         getUsers: builder.query({
-            query: () => `/user`
+            query: () => `/users`
         }),
         signUp: builder.mutation({
             query: (FormData) => ({
-                url: `/user/signup`,
+                url: `/users/signup`,
                 method: 'POST',
                 body: FormData
             })
         }),
+        verifyEmail: builder.mutation({
+            query: ({ verificationCode }) => ({
+                url: `/users/verify${verificationCode}`,
+                method: 'GET',
+            })
+        }),
         signIn: builder.mutation({
-            url: `/user/signin`,
-            method: 'POST',
-            body: FormData
+            query: (FormData) => ({
+                url: `/users/signin`,
+                method: 'POST',
+                body: FormData
+            }),
+            async onQueryStarted(args, { dispatch, queryFulfilled }) {
+                try {
+                    const { data } = await queryFulfilled;
+                    localStorage.setItem('UserData', JSON.stringify({ ...data }));
+                    await dispatch(currentUserApi.endpoints.getMe.initiate(data.user.id));
+                } catch (error) {
+                    console.error(error)
+                }
+            },
         }),
         updateUser: builder.mutation({
             query: (id, FormData) => ({
-                url: `/user/${id}`,
+                url: `/users/${id}`,
                 method: 'PATCH',
                 body: FormData
             })
         }),
         deleteUser: builder.mutation({
             query: (id) => ({
-                url: `/user/${id}`,
+                url: `/users/${id}`,
                 method: 'DELETE'
             })
-        }),
-        // async onQueryStarted(args, { queryFulfilled }) {
-        //     try {
-        //         const data = await queryFulfilled;
-        //         console.log(data)
-        //         // await dispatch(userApi.endpoints.getUsers.initiate(null));
-        //     } catch (error) {
-        //         console.error('error')
-        //     }
-        // }
+        })
     })
 })
 

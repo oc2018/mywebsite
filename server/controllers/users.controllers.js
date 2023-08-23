@@ -13,8 +13,9 @@ export const getUser = async (req, res) => {
     const { id: _id } = req.params;
     try {
         const user = await WebUser.findOne({ _id });
+        console.log(user)
 
-        res.status(200).send(user);
+        res.status(200).json(user);
     } catch (error) {
         res.status(500).send({ message: error.message });
     }
@@ -66,7 +67,7 @@ export const authenticateUser = async(req, res) => {
 
         const token = Jwt.sign({userId: isExistingUser._id, name: isExistingUser.name, email: isExistingUser.email }, secret, { expiresIn: '1h'});
 
-        res.status(200).send({ user: { name: isExistingUser.name, email: isExistingUser.email}, token});
+        res.status(200).send({ user: { id: isExistingUser._id, name: isExistingUser.name, email: isExistingUser.email}, token});
     } catch (error) {
         res.status(500).send({ message: error.message });
     }

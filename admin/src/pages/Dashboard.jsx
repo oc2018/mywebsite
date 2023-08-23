@@ -3,18 +3,20 @@ import { Link } from 'react-router-dom';
 
 import { useGetMessagesQuery, useDeleteMessageMutation } from '../services/messagesApi';
 import { useGetProjectsQuery, useDeleteProjectMutation } from '../services/projectsApi';
-import { useGetUsersQuery } from '../services/userApi';
+// import { useGetUsersQuery } from '../services/userApi';
 import { Loading } from '../components';
 import { dateFormatter } from '../util/dateFormatter';
+import { useSelector } from 'react-redux';
 
 const Dashboard = () => {
     const { data: messages, isLoading: messagesIsLoading } = useGetMessagesQuery();
-    const { data: users } = useGetUsersQuery();
+    // const { data: users } = useGetUsersQuery();
     const [ deleteMessage ]  = useDeleteMessageMutation();
     const [ deleteProject ] = useDeleteProjectMutation();
     const { data: projects, isLoading: projectIsLoading } = useGetProjectsQuery();
 
-    console.log(users)
+    const  user = useSelector(state => state.userState.user)
+    console.log(user)
 
     const deleteMsg = ( id ) => {
       // e.preventDefault();
