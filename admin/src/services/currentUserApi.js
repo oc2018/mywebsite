@@ -10,8 +10,8 @@ export const currentUserApi = createApi({
     }),
     tagTypes: ['User'],
     endpoints: builder => ({
-        getMe: builder.query({  
-            query: (id) => `/users/${ id }`,     
+        getMe: builder.query({
+            query: (id) => `/users/${ id }`,
             // transformResponse: (result) => result.data,
             async onQueryStarted( args, { dispatch, queryFulfilled }) {
                 try {

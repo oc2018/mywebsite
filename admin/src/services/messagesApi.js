@@ -1,17 +1,31 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { baseURL } from '../util/backendUrl';
+// import env from 'dotenv';
+// env.config();
+
+// const baseURL = process.env.SERVER_ENDPOINT
 
 export const messagesApi = createApi({
     reducerPath: 'messagesApi',
     baseQuery: fetchBaseQuery({
         baseUrl: baseURL,
+        prepareHeaders: (headers ) => {
+            headers.set("authorization",`Bearer ${JSON.parse(localStorage.getItem('profile')).token}`);
+            console.log('Headers', headers);
+            return headers;
+        },
     }),
     endpoints: (builder) => ({
         getMessage: builder.query({
             query: (id) => `/msg/${id}`
         }),
         getMessages: builder.query({
-            query: () => `/msg`
+            query: () => `/msg`,
+            // prepareHeaders: (headers ) => {
+            //     headers.set("Authorization",`Bearer ${JSON.parse(localStorage.getItem('profile'))}`);
+            //     console.log('user',JSON.parse(localStorage.getItem('profile').user));
+            //     return headers;
+            // },
         }),
         createMessage: builder.mutation({
             query: (formData) => ({

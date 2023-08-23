@@ -6,7 +6,7 @@ import { currentUserApi } from "./currentUserApi";
 export const userApi = createApi({
     reducerPath: 'userApi',
     baseQuery: fetchBaseQuery({
-        baseUrl: baseURL,
+        baseUrl: baseURL        
     }),
     endpoints: (builder) => ({
         getUsers: builder.query({
@@ -34,7 +34,7 @@ export const userApi = createApi({
             async onQueryStarted(args, { dispatch, queryFulfilled }) {
                 try {
                     const { data } = await queryFulfilled;
-                    localStorage.setItem('UserData', JSON.stringify({ ...data }));
+                    localStorage.setItem('profile', JSON.stringify({ ...data }));
                     await dispatch(currentUserApi.endpoints.getMe.initiate(data.user.id));
                 } catch (error) {
                     console.error(error)

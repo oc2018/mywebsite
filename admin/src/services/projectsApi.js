@@ -5,6 +5,9 @@ export const projectsApi = createApi({
     reducerPath: 'projectsApi',
     baseQuery: fetchBaseQuery({
         baseUrl: baseURL,
+        prepareHeaders: (headers) => {
+            headers.set("authorization", `Bearer ${JSON.parse(localStorage.getItem('profile')).token}`);
+        }
     }),
     endpoints: (builder) => ({
         getProject: builder.query({

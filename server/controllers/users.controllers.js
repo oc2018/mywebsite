@@ -13,7 +13,8 @@ export const getUser = async (req, res) => {
     const { id: _id } = req.params;
     try {
         const user = await WebUser.findOne({ _id });
-        console.log(user)
+        console.log({ user: 
+        []})
 
         res.status(200).json(user);
     } catch (error) {
