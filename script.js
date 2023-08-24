@@ -39,6 +39,7 @@ const submitter = document.querySelector(".btnsubmit");
 const input = document.querySelector("textarea");
 
 const baseUrl = 'https://mywebsite-backend-mocha.vercel.app/api/';
+// const baseUrl = 'http://localhost:3000/api/';
 
 const fetchData = async(url, options) => {
     try {
@@ -51,7 +52,7 @@ const fetchData = async(url, options) => {
     }
 }
 
-fetchData(`${ baseUrl }msg`, { mode:'no-cors', method: 'GET', headers: {"authorization": "" } })
+fetchData(`${ baseUrl }msg`, { mode:'cors', method: 'GET', headers: {"authorization": "" } })
  
 submitter.addEventListener('click', async(e) => { 
     e.preventDefault();
@@ -61,7 +62,7 @@ submitter.addEventListener('click', async(e) => {
         ) {
         return alert('Please fill out all the fields of the form.')
     }else {
-        await fetchData(`${ baseUrl }msg`,{ mode:'no-cors',  headers: {"authorization": "" }, method: 'POST', body: JSON.stringify({
+        await fetchData(`${ baseUrl }msg`,{ mode:'cors',  headers: {"authorization": "" }, method: 'POST', body: JSON.stringify({
             "name": form.getElementsByTagName("input")[0].value,
             "email": form.getElementsByTagName("input")[1].value,
             "message": form.getElementsByTagName("textarea")[0].value
@@ -76,7 +77,7 @@ submitter.addEventListener('click', async(e) => {
 
 // create project dynamically
 
- const projects = fetchData(`${ baseUrl }project`, { mode: 'no-cors',  headers: {"authorization": "" }, method: 'GET' });
+ const projects = fetchData(`${ baseUrl }project`, { mode: 'cors',  headers: {"authorization": "" }, method: 'GET' });
  const projectsHTML = document.querySelector('.projects-content');
 
  projects.then((ps) => ps.map( p => {
