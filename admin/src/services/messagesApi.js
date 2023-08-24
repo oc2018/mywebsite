@@ -11,7 +11,7 @@ export const messagesApi = createApi({
         baseUrl: baseURL,
         prepareHeaders: (headers ) => {
             headers.set("authorization",`Bearer ${JSON.parse(localStorage.getItem('profile')).token}`);
-            console.log('Headers', headers);
+            // console.log('Headers', headers);
             return headers;
         },
     }),

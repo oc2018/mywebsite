@@ -6,7 +6,6 @@ import cors from 'cors';
 import msgRoutes from './routes/message.routes.js';
 import projectRoutes from './routes/project.routes.js';
 import userRoutes from './routes/user.routes.js';
-import auth from './middleware/auth.js';
 
 env.config();
 
@@ -15,8 +14,8 @@ app.use(cors());
 
 app.use(express.json());
 app.use('/api/users', userRoutes);
-app.use('/api/msg', auth, msgRoutes);
-app.use('/api/project', auth, projectRoutes);
+app.use('/api/msg', msgRoutes);
+app.use('/api/project', projectRoutes);
 
 app.get('/', (req, res) => {
     res.send('Welcome to my website')

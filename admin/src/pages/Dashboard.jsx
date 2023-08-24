@@ -1,5 +1,5 @@
 // import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { useGetMessagesQuery, useDeleteMessageMutation } from '../services/messagesApi';
 import { useGetProjectsQuery, useDeleteProjectMutation } from '../services/projectsApi';
@@ -7,6 +7,7 @@ import { useGetProjectsQuery, useDeleteProjectMutation } from '../services/proje
 import { Loading } from '../components';
 import { dateFormatter } from '../util/dateFormatter';
 import { useSelector } from 'react-redux';
+import { logout } from '../features/authSlice';
 
 const Dashboard = () => {
     const { data: messages, isLoading: messagesIsLoading } = useGetMessagesQuery();
@@ -14,6 +15,7 @@ const Dashboard = () => {
     const [ deleteMessage ]  = useDeleteMessageMutation();
     const [ deleteProject ] = useDeleteProjectMutation();
     const { data: projects, isLoading: projectIsLoading } = useGetProjectsQuery();
+    const navigate = useNavigate();
 
     const  user = useSelector(state => state.userState.user)
     console.log(user)
@@ -27,8 +29,17 @@ const Dashboard = () => {
       deleteProject(id);
     }
 
+    const handleLogout = () => {
+      logout();
+      navigate('/dashboard')
+    }
+
   return (
     <div className="flex w-full flex-col md:flex-row">
+        <div className='flex justify-between px-5 pt-5'>
+          <button onClick={ handleLogout }>Logout</button>
+          <p>{user?.name}</p>
+        </div>
       <div className='p-4 w-full flex gap-2 flex-col'>
         <h3 className='text-center mb-10 text-3xl font-bold text-purple-950'>Messages</h3>
         <Link className="w-auto text-sm px-3 mb-2 py-1 rounded-sm text-blue-500 font-semibold bg-gray-300 float-right" to={`/msgForm`}>Enter the Message</Link>

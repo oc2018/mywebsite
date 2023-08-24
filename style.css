@@ -639,6 +639,7 @@ section {
 
     section, .home {
         min-height: 100vh;
+        align-items: flex-start;
     }
 
     #home {
