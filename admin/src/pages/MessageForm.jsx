@@ -11,6 +11,8 @@ const MessageForm = () => {
     const [ formData, setFormData ] = useState(initialState);
     const [isEdit, setIsEdit] = useState(false);
     const navigate = useNavigate();
+
+    console.log(formData);
     
     const [ createMessage ] = useCreateMessageMutation();
     const [ updateMessage ] = useUpdateMessageMutation();

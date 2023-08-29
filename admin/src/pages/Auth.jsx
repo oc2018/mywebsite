@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSignUpMutation, useSignInMutation } from '../services/userApi';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,10 +9,8 @@ const Auth = () => {
     const [isSignUp, setIsSignUp] = useState(false);
 
     const [ signUp ] = useSignUpMutation();
-    const [ signIn ] = useSignInMutation();
+    const [ signIn, { isSuccess: isLogInSuccess } ] = useSignInMutation();
     const navigate = useNavigate();
-
-    // console.log(formData)
 
     const toggleSignUp = (e) => {
         e.preventDefault();
@@ -25,11 +23,15 @@ const Auth = () => {
             signUp(formData);
             setIsSignUp(false);
         } else {
-            signIn(formData);
-            navigate('/dashboard');
+            signIn(formData);            
         }
         setFormData(initialState);
     };
+    useEffect(()=> {
+        if(isLogInSuccess){
+            navigate('/dashboard');
+        }
+    },[isLogInSuccess, navigate])
 
   return (
     <div className="flex p-10 md:p-5 w-full justify-center items-center h-screen">

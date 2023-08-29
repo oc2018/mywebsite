@@ -66,7 +66,7 @@ export const authenticateUser = async(req, res) => {
 
         if(!isValidPassword) return res.status(403).send({ message: 'Password is not correct' });
 
-        const token = Jwt.sign({userId: isExistingUser._id, name: isExistingUser.name, email: isExistingUser.email }, secret, { expiresIn: '1h'});
+        const token = Jwt.sign({ userId: isExistingUser._id, name: isExistingUser.name, email: isExistingUser.email }, secret, { expiresIn: '1h'});
 
         res.status(200).send({ user: { id: isExistingUser._id, name: isExistingUser.name, email: isExistingUser.email}, token});
     } catch (error) {

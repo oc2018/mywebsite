@@ -10,8 +10,9 @@ export const messagesApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: baseURL,
         prepareHeaders: (headers ) => {
-            headers.set("authorization",`Bearer ${JSON.parse(localStorage.getItem('profile')).token}`);
-            // console.log('Headers', headers);
+            if(JSON.parse(localStorage.getItem('profile'))) {
+                headers.set("authorization",`Bearer ${JSON.parse(localStorage.getItem('profile')).token}`);
+            }
             return headers;
         },
     }),
@@ -21,11 +22,6 @@ export const messagesApi = createApi({
         }),
         getMessages: builder.query({
             query: () => `/msg`,
-            // prepareHeaders: (headers ) => {
-            //     headers.set("Authorization",`Bearer ${JSON.parse(localStorage.getItem('profile'))}`);
-            //     console.log('user',JSON.parse(localStorage.getItem('profile').user));
-            //     return headers;
-            // },
         }),
         createMessage: builder.mutation({
             query: (formData) => ({

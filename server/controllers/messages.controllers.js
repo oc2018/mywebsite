@@ -16,7 +16,7 @@ export const getMessage = async (req, res) => {
 
 export const getMessages = async(req, res) => {
     try {
-        const data = await Message.find().sort({_id: -1});
+        const data = await Message.find().sort({ _id: -1});
 
         res.status(200).send(data);
     } catch (error) {
@@ -26,10 +26,10 @@ export const getMessages = async(req, res) => {
 }
 
 export const createMsg = async(req, res) => {
-    const data = req.body;
-    
+    const {name, email, message } = req.body;
+    // console.log(data);
      try {
-        const newMsg = new Message(data);
+        const newMsg = new Message({ name: name.trim(), email: email.trim(), message: message.trim() });
         await newMsg.save();
 
         res.status(201).send( newMsg );
