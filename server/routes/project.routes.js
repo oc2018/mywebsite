@@ -4,10 +4,10 @@ import auth from '../middleware/auth.js';
 
 const router = express.Router();
 
-router.get('/:id', auth, getProject)
+router.get('/:id', getProject)
 router.get('/', getProjects);
-router.post('/', auth, createProject);
-router.patch('/:id', auth,updateProject);
-router.delete('/:id', auth, deleteProject);
+router.post('/', createProject);
+router.patch('/:id', updateProject);
+router.delete('/:id', deleteProject);
 
 export default router;

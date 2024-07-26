@@ -7,14 +7,15 @@ import mongoose from "mongoose";
 env.config();
 
 const secret = process.env.SECRET;
+
+// console.log(secret)
 //get one user
 
 export const getUser = async (req, res) => {
     const { id: _id } = req.params;
     try {
         const user = await WebUser.findOne({ _id });
-        console.log({ user: 
-        []})
+        // console.log({ user: user})
 
         res.status(200).json(user);
     } catch (error) {
@@ -58,6 +59,7 @@ export const createUser = async(req, res) => {
 
 export const authenticateUser = async(req, res) => {
     const { email, password } = req.body;
+
     try {
         const isExistingUser = await WebUser.findOne({ email: email});
         if(!isExistingUser) return res.status(403).send({ message: 'Not a user, please sign up'});
@@ -71,8 +73,8 @@ export const authenticateUser = async(req, res) => {
         res.status(200).send({ user: { id: isExistingUser._id, name: isExistingUser.name, email: isExistingUser.email}, token});
     } catch (error) {
         res.status(500).send({ message: error.message });
-    }
-}
+    };
+};
 
 export const updateUser = async(req, res) => {
     const { id: _id } = req.params;
@@ -93,9 +95,9 @@ export const updateUser = async(req, res) => {
         res.status(200).send(updatedUser);
     } catch (error) {
         res.status(404).send({ message: error.message });
-    }
+    };
 
-}
+};
 
 // delete user
 
@@ -113,5 +115,5 @@ export const deleteUser = async(req, res) => {
 
     } catch (error) {
         res.status(500).send({ message: error.message });
-    }
-}
+    };
+};

@@ -26,7 +26,7 @@ const port = process.env.PORT || 4000;
 const connectDB = () => {
     try {
         mongoose.connect(process.env.DB_CONNECTION_URL)
-        app.listen(port, () => console.log(`server running on port ${ port }`));
+        app.listen(port, () => console.log(`server running on: http://localhost:${ port }`));
     } catch (error) {
         console.log(error);
     }

@@ -28,7 +28,7 @@ export const getProjects = async (req, res) => {
 export const createProject = async(req, res)=> {
     const data = req.body;
 
-    try {
+    try { 
         const newProject = new Project(data);
         await newProject.save();
 
@@ -61,7 +61,7 @@ export const updateProject = async(req, res) => {
 
 export const deleteProject = async(req, res) => {
     const { id: _id } = req.params;
-
+    
     try {
         if(!mongoose.Types.ObjectId.isValid(_id)) return res.status(404).send({ message: `Not a valid project id.` });
 

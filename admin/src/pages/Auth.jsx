@@ -28,6 +28,7 @@ const Auth = () => {
         setFormData(initialState);
     };
     useEffect(()=> {
+        console.log(isLogInSuccess)
         if(isLogInSuccess){
             navigate('/dashboard');
         }

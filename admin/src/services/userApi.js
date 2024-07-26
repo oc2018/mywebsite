@@ -33,8 +33,8 @@ export const userApi = createApi({
             }),
             async onQueryStarted(args, { dispatch, queryFulfilled }) {
                 try {
-                    // console.log(getState());
                     const { data } = await queryFulfilled;
+                    // console.log(data);
                     localStorage.setItem('profile', JSON.stringify({ ...data }));
                     await dispatch(currentUserApi.endpoints.getMe.initiate(data.user.id));
                 } catch (error) {
